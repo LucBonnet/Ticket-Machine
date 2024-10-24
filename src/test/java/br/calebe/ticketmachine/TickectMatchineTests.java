@@ -55,4 +55,15 @@ class TicketMachineTests {
 
 		Assertions.assertEquals(0, tm.getSaldo());
 	}
+
+	@Test
+	public void inserirPapelMoedaValidoTest() {
+		TicketMachine tm = new TicketMachine(3);
+
+		Assertions.assertDoesNotThrow(() -> {
+			tm.inserir(5);
+		});
+
+		Assertions.assertEquals(5, tm.getSaldo());
+	}
 }
