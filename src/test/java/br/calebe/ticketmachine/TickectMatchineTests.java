@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import br.calebe.ticketmachine.core.TicketMachine;
+import br.calebe.ticketmachine.exception.PapelMoedaInvalidaException;
 import br.calebe.ticketmachine.exception.SaldoInsuficienteException;
 
 class TicketMachineTests {
@@ -42,5 +43,16 @@ class TicketMachineTests {
 		});
 
 		Assertions.assertEquals(2, tm.getSaldo());
+	}
+
+	@Test
+	public void inserirPapelMoedaInvalidoTest() {
+		TicketMachine tm = new TicketMachine(3);
+
+		Assertions.assertThrows(PapelMoedaInvalidaException.class, () -> {
+			tm.inserir(3);
+		});
+
+		Assertions.assertEquals(0, tm.getSaldo());
 	}
 }
