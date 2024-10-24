@@ -25,4 +25,15 @@ class TrocoTests {
         }
     }
     
+    @Test
+    public void obterTrocoComTodosOsValoresDePapelMoedaTest() {
+        Troco troco = new Troco(187);
+
+        Iterator<PapelMoeda> iterator = troco.getIterator();
+        while(iterator.hasNext()) {
+            PapelMoeda pm = iterator.next();
+            Assertions.assertEquals(1, pm.getQuantidade());
+        }
+    }
+
 }
