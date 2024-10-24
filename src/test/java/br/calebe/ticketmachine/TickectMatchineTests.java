@@ -15,4 +15,17 @@ class TicketMachineTests {
 			tm.imprimir();
 		});
 	}
+
+	@Test
+	public void imprimirBilheteComSaldoAbaixoDoValorTest() {
+		TicketMachine tm = new TicketMachine(3);
+
+		Assertions.assertDoesNotThrow(() -> {
+			tm.inserir(2);
+		});
+
+		Assertions.assertThrows(SaldoInsuficienteException.class, () -> {
+			tm.imprimir();
+		});
+	}
 }
