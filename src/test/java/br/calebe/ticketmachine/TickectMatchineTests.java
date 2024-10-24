@@ -28,4 +28,19 @@ class TicketMachineTests {
 			tm.imprimir();
 		});
 	}
+
+	@Test
+	public void imprimirBilheteComSaldoSuficienteTest() {
+		TicketMachine tm = new TicketMachine(3);
+
+		Assertions.assertDoesNotThrow(() -> {
+			tm.inserir(5);
+		});
+
+		Assertions.assertDoesNotThrow(() -> {
+			tm.imprimir();
+		});
+
+		Assertions.assertEquals(2, tm.getSaldo());
+	}
 }
