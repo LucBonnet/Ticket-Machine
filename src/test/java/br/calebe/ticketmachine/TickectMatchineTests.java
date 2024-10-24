@@ -1,8 +1,11 @@
 package br.calebe.ticketmachine;
 
+import java.util.Iterator;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import br.calebe.ticketmachine.core.PapelMoeda;
 import br.calebe.ticketmachine.core.TicketMachine;
 import br.calebe.ticketmachine.exception.PapelMoedaInvalidaException;
 import br.calebe.ticketmachine.exception.SaldoInsuficienteException;
@@ -65,5 +68,17 @@ class TicketMachineTests {
 		});
 
 		Assertions.assertEquals(5, tm.getSaldo());
+	}
+
+	@Test
+	public void obterTrocoComSaldoMaiorQueZeroTest() {
+		TicketMachine tm = new TicketMachine(3);
+
+		Assertions.assertDoesNotThrow(() -> {
+			tm.inserir(5);
+		});
+
+		Iterator<Integer> troco = tm.getTroco();
+		Assertions.assertNotNull(troco);
 	}
 }
